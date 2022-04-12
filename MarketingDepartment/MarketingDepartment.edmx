@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MarketingDepartmentDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Banks">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Consignments">
+          <Key>
+            <PropertyRef Name="ConsignmentId" />
+          </Key>
+          <Property Name="ConsignmentId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+          <Property Name="Destination" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConsignmentsProducts">
+          <Key>
+            <PropertyRef Name="ConsignmentProductId" />
+          </Key>
+          <Property Name="ConsignmentProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConsignmentId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ProductsCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="bit" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PriceHistory">
+          <Key>
+            <PropertyRef Name="PriceHistoryId" />
+          </Key>
+          <Property Name="PriceHistoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Price" Type="real" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Consignme__Consi__1DB06A4F">
+          <End Role="Consignments" Type="Self.Consignments" Multiplicity="1" />
+          <End Role="ConsignmentsProducts" Type="Self.ConsignmentsProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consignments">
+              <PropertyRef Name="ConsignmentId" />
+            </Principal>
+            <Dependent Role="ConsignmentsProducts">
+              <PropertyRef Name="ConsignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consignme__Produ__1EA48E88">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ConsignmentsProducts" Type="Self.ConsignmentsProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ConsignmentsProducts">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consignments_Banks">
+          <End Role="Banks" Type="Self.Banks" Multiplicity="1" />
+          <End Role="Consignments" Type="Self.Consignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Banks">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="Consignments">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consignments_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Consignments" Type="Self.Consignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Consignments">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceHistory_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PriceHistory" Type="Self.PriceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PriceHistory">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Categories1">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MarketingDepartmentDatabaseModelStoreContainer">
+          <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consignments" EntityType="Self.Consignments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConsignmentsProducts" EntityType="Self.ConsignmentsProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PriceHistory" EntityType="Self.PriceHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Consignme__Consi__1DB06A4F" Association="Self.FK__Consignme__Consi__1DB06A4F">
+            <End Role="Consignments" EntitySet="Consignments" />
+            <End Role="ConsignmentsProducts" EntitySet="ConsignmentsProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consignme__Produ__1EA48E88" Association="Self.FK__Consignme__Produ__1EA48E88">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ConsignmentsProducts" EntitySet="ConsignmentsProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consignments_Banks" Association="Self.FK_Consignments_Banks">
+            <End Role="Banks" EntitySet="Banks" />
+            <End Role="Consignments" EntitySet="Consignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consignments_Customers" Association="Self.FK_Consignments_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Consignments" EntitySet="Consignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceHistory_Products" Association="Self.FK_PriceHistory_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="PriceHistory" EntitySet="PriceHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Categories1" Association="Self.FK_Products_Categories1">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MarketingDepartmentDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MarketingDepartmentDatabaseEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Banks" EntityType="MarketingDepartmentDatabaseModel.Bank" />
+          <EntitySet Name="Categories" EntityType="MarketingDepartmentDatabaseModel.Category" />
+          <EntitySet Name="Consignments" EntityType="MarketingDepartmentDatabaseModel.Consignment" />
+          <EntitySet Name="ConsignmentsProducts" EntityType="MarketingDepartmentDatabaseModel.ConsignmentsProduct" />
+          <EntitySet Name="Customers" EntityType="MarketingDepartmentDatabaseModel.Customer" />
+          <EntitySet Name="PriceHistories" EntityType="MarketingDepartmentDatabaseModel.PriceHistory" />
+          <EntitySet Name="Products" EntityType="MarketingDepartmentDatabaseModel.Product" />
+          <AssociationSet Name="FK_Consignments_Banks" Association="MarketingDepartmentDatabaseModel.FK_Consignments_Banks">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="Consignment" EntitySet="Consignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Categories1" Association="MarketingDepartmentDatabaseModel.FK_Products_Categories1">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consignme__Consi__1DB06A4F" Association="MarketingDepartmentDatabaseModel.FK__Consignme__Consi__1DB06A4F">
+            <End Role="Consignment" EntitySet="Consignments" />
+            <End Role="ConsignmentsProduct" EntitySet="ConsignmentsProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consignments_Customers" Association="MarketingDepartmentDatabaseModel.FK_Consignments_Customers">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Consignment" EntitySet="Consignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consignme__Produ__1EA48E88" Association="MarketingDepartmentDatabaseModel.FK__Consignme__Produ__1EA48E88">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ConsignmentsProduct" EntitySet="ConsignmentsProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PriceHistory_Products" Association="MarketingDepartmentDatabaseModel.FK_PriceHistory_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="PriceHistory" EntitySet="PriceHistories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="BankId" />
+          </Key>
+          <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Consignments" Relationship="MarketingDepartmentDatabaseModel.FK_Consignments_Banks" FromRole="Bank" ToRole="Consignment" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="MarketingDepartmentDatabaseModel.FK_Products_Categories1" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Consignment">
+          <Key>
+            <PropertyRef Name="ConsignmentId" />
+          </Key>
+          <Property Name="ConsignmentId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <Property Name="Destination" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Bank" Relationship="MarketingDepartmentDatabaseModel.FK_Consignments_Banks" FromRole="Consignment" ToRole="Bank" />
+          <NavigationProperty Name="ConsignmentsProducts" Relationship="MarketingDepartmentDatabaseModel.FK__Consignme__Consi__1DB06A4F" FromRole="Consignment" ToRole="ConsignmentsProduct" />
+          <NavigationProperty Name="Customer" Relationship="MarketingDepartmentDatabaseModel.FK_Consignments_Customers" FromRole="Consignment" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="ConsignmentsProduct">
+          <Key>
+            <PropertyRef Name="ConsignmentProductId" />
+          </Key>
+          <Property Name="ConsignmentProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConsignmentId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="ProductsCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Consignment" Relationship="MarketingDepartmentDatabaseModel.FK__Consignme__Consi__1DB06A4F" FromRole="ConsignmentsProduct" ToRole="Consignment" />
+          <NavigationProperty Name="Product" Relationship="MarketingDepartmentDatabaseModel.FK__Consignme__Produ__1EA48E88" FromRole="ConsignmentsProduct" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Boolean" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Consignments" Relationship="MarketingDepartmentDatabaseModel.FK_Consignments_Customers" FromRole="Customer" ToRole="Consignment" />
+        </EntityType>
+        <EntityType Name="PriceHistory">
+          <Key>
+            <PropertyRef Name="PriceHistoryId" />
+          </Key>
+          <Property Name="PriceHistoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Price" Type="Single" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="MarketingDepartmentDatabaseModel.FK_PriceHistory_Products" FromRole="PriceHistory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="MarketingDepartmentDatabaseModel.FK_Products_Categories1" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="ConsignmentsProducts" Relationship="MarketingDepartmentDatabaseModel.FK__Consignme__Produ__1EA48E88" FromRole="Product" ToRole="ConsignmentsProduct" />
+          <NavigationProperty Name="PriceHistories" Relationship="MarketingDepartmentDatabaseModel.FK_PriceHistory_Products" FromRole="Product" ToRole="PriceHistory" />
+        </EntityType>
+        <Association Name="FK_Consignments_Banks">
+          <End Type="MarketingDepartmentDatabaseModel.Bank" Role="Bank" Multiplicity="1" />
+          <End Type="MarketingDepartmentDatabaseModel.Consignment" Role="Consignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="Consignment">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Categories1">
+          <End Type="MarketingDepartmentDatabaseModel.Category" Role="Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MarketingDepartmentDatabaseModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consignme__Consi__1DB06A4F">
+          <End Type="MarketingDepartmentDatabaseModel.Consignment" Role="Consignment" Multiplicity="1" />
+          <End Type="MarketingDepartmentDatabaseModel.ConsignmentsProduct" Role="ConsignmentsProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consignment">
+              <PropertyRef Name="ConsignmentId" />
+            </Principal>
+            <Dependent Role="ConsignmentsProduct">
+              <PropertyRef Name="ConsignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consignments_Customers">
+          <End Type="MarketingDepartmentDatabaseModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="MarketingDepartmentDatabaseModel.Consignment" Role="Consignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Consignment">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consignme__Produ__1EA48E88">
+          <End Type="MarketingDepartmentDatabaseModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="MarketingDepartmentDatabaseModel.ConsignmentsProduct" Role="ConsignmentsProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ConsignmentsProduct">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PriceHistory_Products">
+          <End Type="MarketingDepartmentDatabaseModel.Product" Role="Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MarketingDepartmentDatabaseModel.PriceHistory" Role="PriceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PriceHistory">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MarketingDepartmentDatabaseModelStoreContainer" CdmEntityContainer="MarketingDepartmentDatabaseEntities1">
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="MarketingDepartmentDatabaseModel.Bank">
+              <MappingFragment StoreEntitySet="Banks">
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="MarketingDepartmentDatabaseModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consignments">
+            <EntityTypeMapping TypeName="MarketingDepartmentDatabaseModel.Consignment">
+              <MappingFragment StoreEntitySet="Consignments">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsignmentsProducts">
+            <EntityTypeMapping TypeName="MarketingDepartmentDatabaseModel.ConsignmentsProduct">
+              <MappingFragment StoreEntitySet="ConsignmentsProducts">
+                <ScalarProperty Name="ProductsCount" ColumnName="ProductsCount" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ConsignmentId" ColumnName="ConsignmentId" />
+                <ScalarProperty Name="ConsignmentProductId" ColumnName="ConsignmentProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="MarketingDepartmentDatabaseModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceHistories">
+            <EntityTypeMapping TypeName="MarketingDepartmentDatabaseModel.PriceHistory">
+              <MappingFragment StoreEntitySet="PriceHistory">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PriceHistoryId" ColumnName="PriceHistoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="MarketingDepartmentDatabaseModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

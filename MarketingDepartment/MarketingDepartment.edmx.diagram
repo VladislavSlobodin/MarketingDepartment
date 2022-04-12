@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ae509e1832434b18a37a503813a59166" Name="Diagram1" ZoomLevel="109">
+        <EntityTypeShape EntityType="MarketingDepartmentDatabaseModel.Bank" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="MarketingDepartmentDatabaseModel.Category" Width="1.5" PointX="0.75" PointY="2.75" />
+        <EntityTypeShape EntityType="MarketingDepartmentDatabaseModel.Consignment" Width="1.5" PointX="3" PointY="7.125" />
+        <EntityTypeShape EntityType="MarketingDepartmentDatabaseModel.ConsignmentsProduct" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="MarketingDepartmentDatabaseModel.Customer" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="MarketingDepartmentDatabaseModel.PriceHistory" Width="1.5" PointX="5.25" PointY="5.5" />
+        <EntityTypeShape EntityType="MarketingDepartmentDatabaseModel.Product" Width="1.5" PointX="3" PointY="2.25" />
+        <AssociationConnector Association="MarketingDepartmentDatabaseModel.FK_Consignments_Banks" />
+        <AssociationConnector Association="MarketingDepartmentDatabaseModel.FK_Products_Categories1" />
+        <AssociationConnector Association="MarketingDepartmentDatabaseModel.FK__Consignme__Consi__1DB06A4F" />
+        <AssociationConnector Association="MarketingDepartmentDatabaseModel.FK_Consignments_Customers" />
+        <AssociationConnector Association="MarketingDepartmentDatabaseModel.FK__Consignme__Produ__1EA48E88" />
+        <AssociationConnector Association="MarketingDepartmentDatabaseModel.FK_PriceHistory_Products" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
