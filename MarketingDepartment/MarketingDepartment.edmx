@@ -23,7 +23,7 @@
           <Key>
             <PropertyRef Name="ConsignmentId" />
           </Key>
-          <Property Name="ConsignmentId" Type="int" Nullable="false" />
+          <Property Name="ConsignmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="BankId" Type="int" Nullable="false" />
           <Property Name="Destination" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -70,7 +70,9 @@
           <Property Name="Count" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__Consignme__Consi__1DB06A4F">
-          <End Role="Consignments" Type="Self.Consignments" Multiplicity="1" />
+          <End Role="Consignments" Type="Self.Consignments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ConsignmentsProducts" Type="Self.ConsignmentsProducts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Consignments">

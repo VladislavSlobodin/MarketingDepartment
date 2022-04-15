@@ -1,9 +1,31 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace MarketingDepartment.ViewModels
 {
     public class Parser
     {
+        public static bool TryGetIds(DataGridView dataGridView, out List<int> ids)
+        {
+            ids = new List<int>();
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                var value = row.Cells[0].Value;
+                if (value != null)
+                {
+                    if (!ids.Contains(Convert.ToInt32(value)))
+                    {
+                        ids.Add(Convert.ToInt32(value));
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public static bool TryGetCellValueString(DataGridViewCell cell, out string value)
         {
             if (cell.Value != null)

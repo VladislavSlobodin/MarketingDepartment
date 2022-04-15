@@ -83,7 +83,44 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormManager.cs" />
+    <Compile Include="Forms\BanksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BanksForm.Designer.cs">
+      <DependentUpon>BanksForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CategoriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CategoriesForm.Designer.cs">
+      <DependentUpon>CategoriesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConsignmentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConsignmentsForm.Designer.cs">
+      <DependentUpon>ConsignmentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomersForm.Designer.cs">
+      <DependentUpon>CustomersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProductsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProductsForm.Designer.cs">
+      <DependentUpon>ProductsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fullname.cs" />
+    <Compile Include="MainMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenuForm.Designer.cs">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MarketingDepartment.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,6 +158,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BanksForm.resx">
+      <DependentUpon>BanksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CategoriesForm.resx">
+      <DependentUpon>CategoriesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConsignmentsForm.resx">
+      <DependentUpon>ConsignmentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomersForm.resx">
+      <DependentUpon>CustomersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProductsForm.resx">
+      <DependentUpon>ProductsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenuForm.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -167,5 +222,6 @@
       <LastGenOutput>MarketingDepartment.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

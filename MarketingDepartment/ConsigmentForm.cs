@@ -95,7 +95,9 @@ namespace MarketingDepartment
             }
 
             //var normalizedDataList = Normalize(consigmentDataAsList);
-            var normalizedDataList = consigmentDataAsList.GroupBy(p => p.ProductId).Select(g => new ProductIdAndCount
+            var normalizedDataList = consigmentDataAsList
+                .GroupBy(p => p.ProductId)
+                .Select(g => new ProductIdAndCount
             {
                 ProductId = g.Key,
                 Count = g.Sum(p => p.Count),
@@ -205,21 +207,6 @@ namespace MarketingDepartment
                 return true;
             }
             return false;
-        }
-
-        private static int GetConsignmentId()
-        {
-            using (var context = new MarketingDepartmentDatabaseEntities1())
-            {
-                if (context.Consignments.Any())
-                {
-                    return context.Consignments.Max(c => c.ConsignmentId) + 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
         }
 
         private void ConsigmentForm_Load(object sender, EventArgs e)

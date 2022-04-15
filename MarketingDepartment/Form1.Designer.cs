@@ -1,6 +1,6 @@
 ﻿namespace MarketingDepartment
 {
-    partial class MainForm
+    partial class Form1
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -42,7 +42,15 @@
             this.покупателяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.банкToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.просмотретьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.категориюТовараToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.товарToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.покупателяToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.банкToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.категориюТовараToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.товарToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.покупателяToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.банкToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Consigments = new System.Windows.Forms.ToolStripMenuItem();
             this.Prices = new System.Windows.Forms.ToolStripMenuItem();
             this.AddProductButton = new System.Windows.Forms.Button();
@@ -53,14 +61,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.AddBankButton = new System.Windows.Forms.Button();
             this.AddCustomerButton = new System.Windows.Forms.Button();
-            this.категориюТовараToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.товарToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.покупателяToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.банкToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.категориюТовараToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.товарToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.покупателяToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.банкToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -113,34 +114,34 @@
             this.AddCustomer,
             this.AddBank});
             this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(180, 22);
+            this.Add.Size = new System.Drawing.Size(148, 22);
             this.Add.Text = "Добавить";
             // 
             // AddProductCategory
             // 
             this.AddProductCategory.Name = "AddProductCategory";
-            this.AddProductCategory.Size = new System.Drawing.Size(180, 22);
+            this.AddProductCategory.Size = new System.Drawing.Size(174, 22);
             this.AddProductCategory.Text = "Категорию товара";
             this.AddProductCategory.Click += new System.EventHandler(this.AddProductCategory_Click);
             // 
             // AddProduct
             // 
             this.AddProduct.Name = "AddProduct";
-            this.AddProduct.Size = new System.Drawing.Size(180, 22);
+            this.AddProduct.Size = new System.Drawing.Size(174, 22);
             this.AddProduct.Text = "Товар";
             this.AddProduct.Click += new System.EventHandler(this.AddGoods_Click);
             // 
             // AddCustomer
             // 
             this.AddCustomer.Name = "AddCustomer";
-            this.AddCustomer.Size = new System.Drawing.Size(180, 22);
+            this.AddCustomer.Size = new System.Drawing.Size(174, 22);
             this.AddCustomer.Text = "Покупателя";
             this.AddCustomer.Click += new System.EventHandler(this.AddCustomer_Click);
             // 
             // AddBank
             // 
             this.AddBank.Name = "AddBank";
-            this.AddBank.Size = new System.Drawing.Size(180, 22);
+            this.AddBank.Size = new System.Drawing.Size(174, 22);
             this.AddBank.Text = "Банк";
             this.AddBank.Click += new System.EventHandler(this.AddBank_Click);
             // 
@@ -152,31 +153,31 @@
             this.покупателяToolStripMenuItem,
             this.банкToolStripMenuItem});
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.удалитьToolStripMenuItem.Text = "Удалить";
             // 
             // категориюТовараToolStripMenuItem
             // 
             this.категориюТовараToolStripMenuItem.Name = "категориюТовараToolStripMenuItem";
-            this.категориюТовараToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.категориюТовараToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.категориюТовараToolStripMenuItem.Text = "Категорию товара";
             // 
             // товарToolStripMenuItem
             // 
             this.товарToolStripMenuItem.Name = "товарToolStripMenuItem";
-            this.товарToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.товарToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.товарToolStripMenuItem.Text = "Товар";
             // 
             // покупателяToolStripMenuItem
             // 
             this.покупателяToolStripMenuItem.Name = "покупателяToolStripMenuItem";
-            this.покупателяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.покупателяToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.покупателяToolStripMenuItem.Text = "Покупателя";
             // 
             // банкToolStripMenuItem
             // 
             this.банкToolStripMenuItem.Name = "банкToolStripMenuItem";
-            this.банкToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.банкToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.банкToolStripMenuItem.Text = "Банк";
             // 
             // просмотретьToolStripMenuItem
@@ -187,8 +188,32 @@
             this.покупателяToolStripMenuItem2,
             this.банкToolStripMenuItem2});
             this.просмотретьToolStripMenuItem.Name = "просмотретьToolStripMenuItem";
-            this.просмотретьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.просмотретьToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.просмотретьToolStripMenuItem.Text = "Просмотреть";
+            // 
+            // категориюТовараToolStripMenuItem2
+            // 
+            this.категориюТовараToolStripMenuItem2.Name = "категориюТовараToolStripMenuItem2";
+            this.категориюТовараToolStripMenuItem2.Size = new System.Drawing.Size(174, 22);
+            this.категориюТовараToolStripMenuItem2.Text = "Категорию товара";
+            // 
+            // товарToolStripMenuItem2
+            // 
+            this.товарToolStripMenuItem2.Name = "товарToolStripMenuItem2";
+            this.товарToolStripMenuItem2.Size = new System.Drawing.Size(174, 22);
+            this.товарToolStripMenuItem2.Text = "Товар";
+            // 
+            // покупателяToolStripMenuItem2
+            // 
+            this.покупателяToolStripMenuItem2.Name = "покупателяToolStripMenuItem2";
+            this.покупателяToolStripMenuItem2.Size = new System.Drawing.Size(174, 22);
+            this.покупателяToolStripMenuItem2.Text = "Покупателя";
+            // 
+            // банкToolStripMenuItem2
+            // 
+            this.банкToolStripMenuItem2.Name = "банкToolStripMenuItem2";
+            this.банкToolStripMenuItem2.Size = new System.Drawing.Size(174, 22);
+            this.банкToolStripMenuItem2.Text = "Банк";
             // 
             // изменитьToolStripMenuItem
             // 
@@ -198,8 +223,32 @@
             this.покупателяToolStripMenuItem1,
             this.банкToolStripMenuItem1});
             this.изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
-            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.изменитьToolStripMenuItem.Text = "Изменить";
+            // 
+            // категориюТовараToolStripMenuItem1
+            // 
+            this.категориюТовараToolStripMenuItem1.Name = "категориюТовараToolStripMenuItem1";
+            this.категориюТовараToolStripMenuItem1.Size = new System.Drawing.Size(174, 22);
+            this.категориюТовараToolStripMenuItem1.Text = "Категорию товара";
+            // 
+            // товарToolStripMenuItem1
+            // 
+            this.товарToolStripMenuItem1.Name = "товарToolStripMenuItem1";
+            this.товарToolStripMenuItem1.Size = new System.Drawing.Size(174, 22);
+            this.товарToolStripMenuItem1.Text = "Товар";
+            // 
+            // покупателяToolStripMenuItem1
+            // 
+            this.покупателяToolStripMenuItem1.Name = "покупателяToolStripMenuItem1";
+            this.покупателяToolStripMenuItem1.Size = new System.Drawing.Size(174, 22);
+            this.покупателяToolStripMenuItem1.Text = "Покупателя";
+            // 
+            // банкToolStripMenuItem1
+            // 
+            this.банкToolStripMenuItem1.Name = "банкToolStripMenuItem1";
+            this.банкToolStripMenuItem1.Size = new System.Drawing.Size(174, 22);
+            this.банкToolStripMenuItem1.Text = "Банк";
             // 
             // Consigments
             // 
@@ -316,59 +365,21 @@
             this.AddCustomerButton.Visible = false;
             this.AddCustomerButton.Click += new System.EventHandler(this.AddCustomerButton_Click);
             // 
-            // категориюТовараToolStripMenuItem1
+            // button1
             // 
-            this.категориюТовараToolStripMenuItem1.Name = "категориюТовараToolStripMenuItem1";
-            this.категориюТовараToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.категориюТовараToolStripMenuItem1.Text = "Категорию товара";
+            this.button1.Location = new System.Drawing.Point(696, 56);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // товарToolStripMenuItem1
-            // 
-            this.товарToolStripMenuItem1.Name = "товарToolStripMenuItem1";
-            this.товарToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.товарToolStripMenuItem1.Text = "Товар";
-            // 
-            // покупателяToolStripMenuItem1
-            // 
-            this.покупателяToolStripMenuItem1.Name = "покупателяToolStripMenuItem1";
-            this.покупателяToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.покупателяToolStripMenuItem1.Text = "Покупателя";
-            // 
-            // банкToolStripMenuItem1
-            // 
-            this.банкToolStripMenuItem1.Name = "банкToolStripMenuItem1";
-            this.банкToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.банкToolStripMenuItem1.Text = "Банк";
-            // 
-            // категориюТовараToolStripMenuItem2
-            // 
-            this.категориюТовараToolStripMenuItem2.Name = "категориюТовараToolStripMenuItem2";
-            this.категориюТовараToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.категориюТовараToolStripMenuItem2.Text = "Категорию товара";
-            // 
-            // товарToolStripMenuItem2
-            // 
-            this.товарToolStripMenuItem2.Name = "товарToolStripMenuItem2";
-            this.товарToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.товарToolStripMenuItem2.Text = "Товар";
-            // 
-            // покупателяToolStripMenuItem2
-            // 
-            this.покупателяToolStripMenuItem2.Name = "покупателяToolStripMenuItem2";
-            this.покупателяToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.покупателяToolStripMenuItem2.Text = "Покупателя";
-            // 
-            // банкToolStripMenuItem2
-            // 
-            this.банкToolStripMenuItem2.Name = "банкToolStripMenuItem2";
-            this.банкToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.банкToolStripMenuItem2.Text = "Банк";
-            // 
-            // MainForm
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 692);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
@@ -377,7 +388,7 @@
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "MainForm";
+            this.Name = "Form1";
             this.Text = "Отдел маркетинга";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -426,6 +437,7 @@
         private System.Windows.Forms.ToolStripMenuItem товарToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem покупателяToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem банкToolStripMenuItem1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
